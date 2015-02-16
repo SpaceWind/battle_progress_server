@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216132451) do
+ActiveRecord::Schema.define(version: 20150216141009) do
 
   create_table "active_keys", force: true do |t|
     t.string   "apikey"
@@ -24,35 +24,18 @@ ActiveRecord::Schema.define(version: 20150216132451) do
     t.datetime "updated_at"
   end
 
-  create_table "hero_descriptors", force: true do |t|
-    t.string   "heroid"
-    t.string   "name"
-    t.integer  "lvl"
+  create_table "h_descriptors", force: true do |t|
+    t.string   "hid"
+    t.string   "hero_name"
     t.integer  "mood"
     t.text     "map"
     t.integer  "pack_max_size"
-    t.integer  "exp"
+    t.integer  "experience"
     t.integer  "exp_to_next_lvl"
-    t.integer  "x"
-    t.integer  "y"
-    t.string   "class"
-    t.string   "race"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "hero_descs", force: true do |t|
-    t.string   "heroid"
-    t.string   "name"
-    t.integer  "lvl"
-    t.integer  "mood"
-    t.integer  "pack_max_size"
-    t.integer  "exp"
-    t.integer  "exp_to_next_lvl"
-    t.integer  "x"
-    t.integer  "y"
-    t.string   "class"
-    t.string   "race"
+    t.integer  "x_pos"
+    t.integer  "y_pos"
+    t.string   "hclass"
+    t.string   "hrace"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

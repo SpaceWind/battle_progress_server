@@ -53,29 +53,19 @@ class InfoapiController < ApplicationController
   
   
   def createTempHero
-  uxh = UserXHero.new
+	gen_heroid = rand(36**16).to_s(36)
+	uxh = UserXHero.new
 	uxh.login = params[:login]
-	uxh.heroid = params[:heroid]
+	uxh.heroid = gen_heroid
 	uxh.save
-	result = {'OK' => uxh.heroid}
+	
+	t = HDescriptor.new
+	t.hid = gen_heroid
+	t.hero_name = params[:name]
+	t.mood = 500
+	t.save
+	result = {'hero' => t}
 	render json: result
-	hero = HeroDescriptor.new
-	hero.hero = 'ferfcrf'
-	#desc.heroid = 'IRCCFFCR'
-	#desc.name = 'test hero '+params[:index]
-	#desc.lvl = params[:lvl]
-	#desc.mood = 0
-	#desc.map = 'QQQQQQQQQQQQQQQQ'
-	#desc.pack_max_size = 100
-	#desc.exp = 7700
-	#desc.exp_to_next_lvl = 12000
-	#desc.x = 8
-	#desc.y = 12
-	#desc.class = params[:class]
-	#desc.race = params[:race]
-	#desc.save*/
-	#result = {'heroid' => desc}
-	#render json: result
   end
   
   def createTempUserxHero
@@ -90,7 +80,7 @@ class InfoapiController < ApplicationController
   def heroes
   require 'date'
 	active_key = ActiveKey.find_by apikey: params[:apikey]
-	if (active_key == nil || ((DateTime.now - active_key.last_updated) / 1.hour) > 1)
+	if (active_key == nil)
 		result = {'success' => false, 'status' => 'wrong or inactive API Key. Try to login and get new one!'}
 		render json: result
 	else
@@ -98,9 +88,9 @@ class InfoapiController < ApplicationController
 		heroNames = Array.new
 		heroIds = Array.new
 		active_heroes.each { |hero|
-			heroDesc = HeroDescriptor.find_by(heroid: hero.heroid)
-			heroNames.push(heroDesc.name)
-			heroIds.push(heroDesc.heroid)
+			heroDesc = HDescriptor.find_by(hid: hero.heroid)
+			heroNames.push(heroDesc.hero_name)
+			heroIds.push(heroDesc.hid)
 		}
 		result = {'success' => true, 'status' => 'OK', 'heroes' => heroIds, 'names' => heroNames}
 		render json: result

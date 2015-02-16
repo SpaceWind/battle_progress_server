@@ -1,9 +1,7 @@
 BattleFiftos::Application.routes.draw do
-  resources :hero_descs
+  resources :h_descriptors
 
   resources :user_x_heros
-
-  resources :hero_descriptors
 
   resources :active_keys
 
