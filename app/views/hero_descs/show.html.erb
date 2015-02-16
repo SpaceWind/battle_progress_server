@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Heroid:</strong>
+  <%= @hero_desc.heroid %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @hero_desc.name %>
+</p>
+
+<p>
+  <strong>Lvl:</strong>
+  <%= @hero_desc.lvl %>
+</p>
+
+<p>
+  <strong>Mood:</strong>
+  <%= @hero_desc.mood %>
+</p>
+
+<p>
+  <strong>Pack max size:</strong>
+  <%= @hero_desc.pack_max_size %>
+</p>
+
+<p>
+  <strong>Exp:</strong>
+  <%= @hero_desc.exp %>
+</p>
+
+<p>
+  <strong>Exp to next lvl:</strong>
+  <%= @hero_desc.exp_to_next_lvl %>
+</p>
+
+<p>
+  <strong>X:</strong>
+  <%= @hero_desc.x %>
+</p>
+
+<p>
+  <strong>Y:</strong>
+  <%= @hero_desc.y %>
+</p>
+
+<p>
+  <strong>Class:</strong>
+  <%= @hero_desc.class %>
+</p>
+
+<p>
+  <strong>Race:</strong>
+  <%= @hero_desc.race %>
+</p>
+
+<%= link_to 'Edit', edit_hero_desc_path(@hero_desc) %> |
+<%= link_to 'Back', hero_descs_path %>

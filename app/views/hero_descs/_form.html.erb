@@ -1,0 +1,61 @@
+<%= form_for(@hero_desc) do |f| %>
+  <% if @hero_desc.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hero_desc.errors.count, "error") %> prohibited this hero_desc from being saved:</h2>
+
+      <ul>
+      <% @hero_desc.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :heroid %><br>
+    <%= f.text_field :heroid %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :lvl %><br>
+    <%= f.number_field :lvl %>
+  </div>
+  <div class="field">
+    <%= f.label :mood %><br>
+    <%= f.number_field :mood %>
+  </div>
+  <div class="field">
+    <%= f.label :pack_max_size %><br>
+    <%= f.number_field :pack_max_size %>
+  </div>
+  <div class="field">
+    <%= f.label :exp %><br>
+    <%= f.number_field :exp %>
+  </div>
+  <div class="field">
+    <%= f.label :exp_to_next_lvl %><br>
+    <%= f.number_field :exp_to_next_lvl %>
+  </div>
+  <div class="field">
+    <%= f.label :x %><br>
+    <%= f.number_field :x %>
+  </div>
+  <div class="field">
+    <%= f.label :y %><br>
+    <%= f.number_field :y %>
+  </div>
+  <div class="field">
+    <%= f.label :class %><br>
+    <%= f.text_field :class %>
+  </div>
+  <div class="field">
+    <%= f.label :race %><br>
+    <%= f.text_field :race %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
