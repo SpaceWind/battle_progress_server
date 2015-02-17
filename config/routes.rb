@@ -21,6 +21,8 @@ BattleFiftos::Application.routes.draw do
   get 'heroes' => 'infoapi#heroes'
   get 'temphero' => 'infoapi#createTempHero'
   get 'ctuxh' => 'infoapi#createTempUserxHero'
+  get 'userExists' => 'infoapi#userExists'
+  get 'ping' => 'infoapi#ping'
   
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

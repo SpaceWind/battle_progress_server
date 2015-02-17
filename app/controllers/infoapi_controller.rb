@@ -51,6 +51,23 @@ class InfoapiController < ApplicationController
 	end
   end
   
+  def userExists
+	result = nil
+	if (params[:login] == nil)
+		result = {'success' => false, 'status' => 'Incorrect login', 'exists' => false}
+	elsif (User.find_by login: params[:login])
+		result = {'success' => true, 'status' => 'user already exists', 'exists' => true}
+	else
+		result = {'success' => true, 'status' => 'OK', 'exists' => false}
+	end
+	render json: result
+  end
+  
+  def ping
+	result = {'success' => true, 'status' => 'Server is UP'}
+	render json: result
+  end
+  
   
   def createTempHero
 	gen_heroid = rand(36**16).to_s(36)
