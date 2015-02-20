@@ -117,7 +117,6 @@ class AdminApiController < ApplicationController
 			result = {'success' => true, 'status' => 'OK', 'heroes' => heroIds, 'names' => heroNames, 'lvls' => heroLvls, 'races' => heroRaces, 'factions' => heroFactions}
 			render json: result
 		end
-	  end
 	end
 	
 	def classes
