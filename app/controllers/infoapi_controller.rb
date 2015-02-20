@@ -24,7 +24,7 @@ class InfoapiController < ApplicationController
 				active_key.rolled_heroid = nil
 				active_key.save
 				
-				result = {'success' => true, 'apikey' => new_apikey}
+				result = {'success' => true, 'apikey' => new_apikey, 'group' => user.group}
 				render json: result
 			else
 				result = {'success' => false, 'status' => 'wrong login/pass combination'}
