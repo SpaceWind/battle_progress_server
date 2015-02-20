@@ -50,6 +50,9 @@ ActiveRecord::Schema.define(version: 20150216141009) do
   create_table "users", force: true do |t|
     t.string   "login"
     t.string   "password"
+    t.string   "realname"
+    t.string   "group"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
