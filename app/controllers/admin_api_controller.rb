@@ -96,25 +96,31 @@ class AdminApiController < ApplicationController
 		status = 'OK'
 		
 		active_key = ActiveKey.find_by apikey: params[:apikey]
-		if (active_key == nil)
-			result = {'success' => false, 'status' => 'wrong or inactive API Key. Try to login and get new one!'}
-			render json: result
+		user = nil
+		if (active_key)
+			user = User.find_by login: active_key.login, group: 'admins'
+			if (user)
+				active_heroes = UserXHero.where('login' => params[:login])
+				heroNames = Array.new
+				heroIds = Array.new
+				heroLvls = Array.new
+				heroRaces = Array.new
+				heroFactions = Array.new
+				active_heroes.each { |hero|
+					heroDesc = HDescriptor.find_by(hid: hero.heroid)
+					heroNames.push(heroDesc.hero_name)
+					heroIds.push(heroDesc.hid)
+					heroLvls.push(heroDesc.lvl)
+					heroFactions.push(heroDesc.hrace)
+					heroRaces.push(heroDesc.hclass)
+				}
+				result = {'success' => true, 'status' => 'OK', 'heroes' => heroIds, 'names' => heroNames, 'lvls' => heroLvls, 'races' => heroRaces, 'factions' => heroFactions}
+				render json: result
+			else
+				reult = {'success' => false, 'status' => 'Incorrect User'}
+			end
 		else
-			active_heroes = UserXHero.where('login' => active_key.login)
-			heroNames = Array.new
-			heroIds = Array.new
-			heroLvls = Array.new
-			heroRaces = Array.new
-			heroFactions = Array.new
-			active_heroes.each { |hero|
-				heroDesc = HDescriptor.find_by(hid: hero.heroid)
-				heroNames.push(heroDesc.hero_name)
-				heroIds.push(heroDesc.hid)
-				heroLvls.push(heroDesc.lvl)
-				heroFactions.push(heroDesc.hrace)
-				heroRaces.push(heroDesc.hclass)
-			}
-			result = {'success' => true, 'status' => 'OK', 'heroes' => heroIds, 'names' => heroNames, 'lvls' => heroLvls, 'races' => heroRaces, 'factions' => heroFactions}
+			result = {'success' => false, 'status' => 'wrong or inactive API Key. Try to login and get new one!'}
 			render json: result
 		end
 	end
@@ -142,5 +148,4 @@ class AdminApiController < ApplicationController
 		result = {'success' => true, 'status' => 'OK', 'factions' => factionNames, 'descriptions' => factionDescriptions}
 		render json: result
 	end
-	
 end
