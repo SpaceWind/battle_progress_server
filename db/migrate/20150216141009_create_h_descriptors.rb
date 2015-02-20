@@ -4,6 +4,7 @@ class CreateHDescriptors < ActiveRecord::Migration
       t.string :hid
       t.string :hero_name
       t.integer :mood
+	  t.integer :lvl
       t.text :map
       t.integer :pack_max_size
       t.integer :experience

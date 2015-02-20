@@ -45,6 +45,8 @@ class InfoapiController < ApplicationController
 		user = User.new
 		user.login = params[:login]
 		user.password = Digest::SHA2.hexdigest(params[:pass])
+		user.realname = params[:realname]
+		user.group = 'players'
 		user.save
 		result = {'success' => true, 'status'=> 'user created'}
 		render json: result

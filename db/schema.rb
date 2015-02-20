@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216141009) do
+ActiveRecord::Schema.define(version: 20150220104152) do
 
   create_table "active_keys", force: true do |t|
     t.string   "apikey"
@@ -24,10 +24,24 @@ ActiveRecord::Schema.define(version: 20150216141009) do
     t.datetime "updated_at"
   end
 
+  create_table "factions", force: true do |t|
+    t.string   "faction_name"
+    t.string   "lib_imp"
+    t.string   "lib_rop"
+    t.string   "lib_dap"
+    t.string   "lib_vip"
+    t.string   "lib_tvp"
+    t.string   "lib_prp"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "h_descriptors", force: true do |t|
     t.string   "hid"
     t.string   "hero_name"
     t.integer  "mood"
+    t.integer  "lvl"
     t.text     "map"
     t.integer  "pack_max_size"
     t.integer  "experience"
@@ -36,6 +50,19 @@ ActiveRecord::Schema.define(version: 20150216141009) do
     t.integer  "y_pos"
     t.string   "hclass"
     t.string   "hrace"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "people", force: true do |t|
+    t.string   "person_name"
+    t.string   "lib_imp"
+    t.string   "lib_rop"
+    t.string   "lib_dap"
+    t.string   "lib_vip"
+    t.string   "lib_tvp"
+    t.string   "lib_prp"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
