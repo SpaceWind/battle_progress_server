@@ -32,6 +32,9 @@ BattleFiftos::Application.routes.draw do
   get 'meta/classes' => 'admin_api#classes'
   get 'meta/factions' => 'admin_api#factions'
   
+  get 'admin/faction/cleanDesc' => 'admin_api#cleanFactionDesc'
+  get 'admin/class/cleanDesc' => 'admin_api#cleanClassDesc'
+  
   
   
   

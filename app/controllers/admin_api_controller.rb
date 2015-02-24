@@ -91,6 +91,63 @@ class AdminApiController < ApplicationController
 		render json: result
 	end
 	
+	def cleanClassDesc
+		success = true
+		status = 'OK'
+		active_key = ActiveKey.find_by apikey: params[:apikey]
+		user = nil
+		if (active_key)
+			user = User.find_by login: active_key.login, group: 'admins'
+			if (user)
+				person = Person.find_by person_name: params[:person_name]
+				if (person)
+					person.description = nil
+					person.save
+				else
+					success = false
+					status = 'Class was not found'
+				end
+			else
+				success = false
+				status = 'You are not allowed to do it'
+			end
+		else
+			success = false
+			status = 'Api key is inactive'
+		end	
+		result = {'success' => success, 'status' => status}
+		render json: result	
+	end
+	
+	
+	def cleanFactionDesc
+		success = true
+		status = 'OK'
+		active_key = ActiveKey.find_by apikey: params[:apikey]
+		user = nil
+		if (active_key)
+			user = User.find_by login: active_key.login, group: 'admins'
+			if (user)
+				faction = Faction.find_by faction_name: params[:faction_name]
+				if (faction)
+					faction.description = nil
+					faction.save
+				else
+					success = false
+					status = 'Faction was not found'
+				end
+			else
+				success = false
+				status = 'You are not allowed to do it'
+			end
+		else
+			success = false
+			status = 'Api key is inactive'
+		end	
+		result = {'success' => success, 'status' => status}
+		render json: result	
+	end
+	
 	def heroes
 		success = true
 		status = 'OK'
