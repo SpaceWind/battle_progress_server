@@ -27,7 +27,7 @@ BattleFiftos::Application.routes.draw do
   get 'admin/promote' => 'admin_api#promote'
   get 'admin/check'	=> 'admin_api#check'
   post 'admin/newFaction' => 'admin_api#newFaction'
-  post 'admin/newClass' => 'admin_api#newClass'
+  get 'admin/newClass' => 'admin_api#newClass'
   get 'admin/heroes' => 'admin_api#heroes'
   get 'meta/classes' => 'admin_api#classes'
   get 'meta/factions' => 'admin_api#factions'
