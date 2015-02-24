@@ -170,7 +170,11 @@ class AdminApiController < ApplicationController
 			if (user)
 				person = Person.find_by person_name: params[:person_name]
 				if (person)
-					person.description = person.description + params[:description]
+					if (person.description)
+						person.description = person.description + params[:description]
+					else
+						person.description = params[:description]
+					end
 					person.save
 				else
 					success = false
@@ -184,7 +188,7 @@ class AdminApiController < ApplicationController
 			success = false
 			status = 'Api key is inactive'
 		end	
-		result = {'success' => success, 'status' => status, 'name' => params[:person_name]}
+		result = {'success' => success, 'status' => status, 'name' => params[:person_name], 'item' => 'Class'}
 		render json: result
 	end
 	
@@ -198,7 +202,11 @@ class AdminApiController < ApplicationController
 			if (user)
 				faction = Faction.find_by faction_name: params[:faction_name]
 				if (faction)
-					faction.description = faction.description + params[:description]
+					if (faction.description)
+						faction.description = faction.description + params[:description]
+					else
+						faction.description = params[:description]
+					end
 					faction.save
 				else
 					success = false
@@ -212,7 +220,7 @@ class AdminApiController < ApplicationController
 			success = false
 			status = 'Api key is inactive'
 		end	
-		result = {'success' => success, 'status' => status, 'name' => params[:faction_name]}
+		result = {'success' => success, 'status' => status, 'name' => params[:faction_name], 'item' => 'Faction'}
 		render json: result	
 	end
 	
