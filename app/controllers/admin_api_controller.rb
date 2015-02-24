@@ -184,7 +184,7 @@ class AdminApiController < ApplicationController
 			success = false
 			status = 'Api key is inactive'
 		end	
-		result = {'success' => success, 'status' => status}
+		result = {'success' => success, 'status' => status, 'name' => params[:person_name]}
 		render json: result
 	end
 	
@@ -212,7 +212,7 @@ class AdminApiController < ApplicationController
 			success = false
 			status = 'Api key is inactive'
 		end	
-		result = {'success' => success, 'status' => status}
+		result = {'success' => success, 'status' => status, 'name' => params[:faction_name]}
 		render json: result	
 	end
 	
