@@ -38,16 +38,22 @@ class AdminApiController < ApplicationController
 		if (active_key)
 			user = User.find_by login: active_key.login, group: 'admins'
 			if (user)
-				faction = Faction.new
-				faction.faction_name = params[:faction_name]
-				faction.lib_imp = params[:lib_imp]
-				faction.lib_rop = params[:lib_rop]
-				faction.lib_dap = params[:lib_dap]
-				faction.lib_vip = params[:lib_vip]
-				faction.lib_tvp = params[:lib_tvp]
-				faction.lib_prp = params[:lib_prp]
-				faction.description = params[:description]
-				faction.save
+				find_faction = Faction.find_by faction_name: params[:faction_name]
+				if (find_faction)
+					success = false
+					status = 'Faction with that name already exists'
+				else
+					faction = Faction.new
+					faction.faction_name = params[:faction_name]
+					faction.lib_imp = params[:lib_imp]
+					faction.lib_rop = params[:lib_rop]
+					faction.lib_dap = params[:lib_dap]
+					faction.lib_vip = params[:lib_vip]
+					faction.lib_tvp = params[:lib_tvp]
+					faction.lib_prp = params[:lib_prp]
+					faction.description = params[:description]
+					faction.save
+				end
 			else
 				success = false
 				status = 'User does not exist or is not admin'
@@ -69,16 +75,22 @@ class AdminApiController < ApplicationController
 		if (active_key)
 			user = User.find_by login: active_key.login, group: 'admins'
 			if (user)
-				person = Person.new
-				person.person_name = params[:person_name]
-				person.lib_imp = params[:lib_imp]
-				person.lib_rop = params[:lib_rop]
-				person.lib_dap = params[:lib_dap]
-				person.lib_vip = params[:lib_vip]
-				person.lib_tvp = params[:lib_tvp]
-				person.lib_prp = params[:lib_prp]
-				person.description = params[:description]
-				person.save
+				find_person = Person.find_by person_name: params[:apikey]
+				if (find_person)
+					success = false
+					status = 'class with that name already exists'
+				else
+					person = Person.new
+					person.person_name = params[:person_name]
+					person.lib_imp = params[:lib_imp]
+					person.lib_rop = params[:lib_rop]
+					person.lib_dap = params[:lib_dap]
+					person.lib_vip = params[:lib_vip]
+					person.lib_tvp = params[:lib_tvp]
+					person.lib_prp = params[:lib_prp]
+					person.description = params[:description]
+					person.save
+				end
 			else
 				success = false
 				status = 'User does not exist or is not admin'
@@ -131,6 +143,62 @@ class AdminApiController < ApplicationController
 				faction = Faction.find_by faction_name: params[:faction_name]
 				if (faction)
 					faction.description = nil
+					faction.save
+				else
+					success = false
+					status = 'Faction was not found'
+				end
+			else
+				success = false
+				status = 'You are not allowed to do it'
+			end
+		else
+			success = false
+			status = 'Api key is inactive'
+		end	
+		result = {'success' => success, 'status' => status}
+		render json: result	
+	end
+	
+	def classAppendDesc
+		success = true
+		status = 'OK'
+		active_key = ActiveKey.find_by apikey: params[:apikey]
+		user = nil
+		if (active_key)
+			user = User.find_by login: active_key.login, group: 'admins'
+			if (user)
+				person = Person.find_by person_name: params[:person_name]
+				if (person)
+					person.description = person.description + params[:description]
+					person.save
+				else
+					success = false
+					status = 'Class was not found'
+				end
+			else
+				success = false
+				status = 'You are not allowed to do it'
+			end
+		else
+			success = false
+			status = 'Api key is inactive'
+		end	
+		result = {'success' => success, 'status' => status}
+		render json: result
+	end
+	
+	def factionAppendDesc
+		success = true
+		status = 'OK'
+		active_key = ActiveKey.find_by apikey: params[:apikey]
+		user = nil
+		if (active_key)
+			user = User.find_by login: active_key.login, group: 'admins'
+			if (user)
+				faction = Faction.find_by faction_name: params[:faction_name]
+				if (faction)
+					faction.description = faction.description + params[:description]
 					faction.save
 				else
 					success = false
