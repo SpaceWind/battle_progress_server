@@ -382,6 +382,7 @@ class AdminApiController < ApplicationController
 				relation = nil
 				foundRelation = ClanRelation.find_by rel_name: params[:rel_name]
 				if (foundRelation)
+					status = 'FOUND????'
 					relation = foundRelation
 				else
 					relation = ClanRelation.new
