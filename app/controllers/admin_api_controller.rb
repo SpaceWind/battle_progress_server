@@ -264,7 +264,7 @@ class AdminApiController < ApplicationController
 				result = {'success' => true, 'status' => 'OK', 'heroes' => heroIds, 'names' => heroNames, 'lvls' => heroLvls, 'races' => heroRaces, 'factions' => heroFactions}
 				render json: result
 			else
-				reult = {'success' => false, 'status' => 'Incorrect User'}
+				result = {'success' => false, 'status' => 'Incorrect User'}
 			end
 		else
 			result = {'success' => false, 'status' => 'wrong or inactive API Key. Try to login and get new one!'}
@@ -336,7 +336,7 @@ class AdminApiController < ApplicationController
 			success = false
 			status = 'No relation Found!'
 		end
-		result = {'status' => status, 'success' => success, 'friendly' => friendly, 'hostile' => hostile}
+		result = {'status' => status, 'success' => success, 'friendly' => friendly, 'hostile' => hostile, 'name' => params[:relation_name]}
 		render json: result
 	end
 	
@@ -364,6 +364,33 @@ class AdminApiController < ApplicationController
 		end
 		result = {'status' => status, 'success' => success, 'relation' => rel}
 		render json: result
+	end
+	
+	def createRelation
+		success = true
+		status = 'OK'
+		
+		active_key = ActiveKey.find_by apikey: params[:apikey]
+		user = nil
+		if (active_key)
+			user = User.find_by login: active_key.login, group: 'admins'
+			if (user)
+				relation = nil
+				foundRelation = ClanRelation.find_by name: params[:rel_name]
+				if (foundRelation)
+					relation = foundRelation
+				else
+					relation = ClanRelation.new
+				end
+				relation.type = params[:rel_type]
+				relation.name = params[:rel_name]
+				relation.friendly = params[:f]
+				relation.hostile = params[:h]
+				relation.save
+			else
+				success = false
+				status = 'Incorrect User'
+			end
 	end
 end
 

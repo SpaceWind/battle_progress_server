@@ -39,6 +39,7 @@ BattleFiftos::Application.routes.draw do
   
   get 'meta/relations' => 'admin_api#getRelations'
   get 'meta/checkRelation' => 'admin_api#checkRelation'
+  get 'admin/createRelation' => 'admin_api#createRelation'
   
   
   
