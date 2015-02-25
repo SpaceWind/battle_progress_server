@@ -392,5 +392,6 @@ class AdminApiController < ApplicationController
 				status = 'Incorrect User'
 			end
 		end
+		render json: {'success' => success, 'status' => status}
 	end
 end
