@@ -40,8 +40,15 @@ class AdminApiController < ApplicationController
 			if (user)
 				find_faction = Faction.find_by faction_name: params[:faction_name]
 				if (find_faction)
-					success = false
-					status = 'Faction with that name already exists'
+					status = 'Overwrited faction'
+					find_faction.description = params[:description]
+					find_faction.lib_imp = params[:lib_imp]
+					find_faction.lib_rop = params[:lib_rop]
+					find_faction.lib_dap = params[:lib_dap]
+					find_faction.lib_vip = params[:lib_vip]
+					find_faction.lib_tvp = params[:lib_tvp]
+					find_faction.lib_prp = params[:lib_prp]
+					find_faction.save
 				else
 					faction = Faction.new
 					faction.faction_name = params[:faction_name]
@@ -77,8 +84,15 @@ class AdminApiController < ApplicationController
 			if (user)
 				find_person = Person.find_by person_name: params[:person_name]
 				if (find_person)
-					success = false
-					status = 'class with that name already exists'
+					status = 'class overwrited!'
+					find_person.description = params[:description]
+					find_person.lib_imp = params[:lib_imp]
+					find_person.lib_rop = params[:lib_rop]
+					find_person.lib_dap = params[:lib_dap]
+					find_person.lib_vip = params[:lib_vip]
+					find_person.lib_tvp = params[:lib_tvp]
+					find_person.lib_prp = params[:lib_prp]
+					find_person.save
 				else
 					person = Person.new
 					person.person_name = params[:person_name]
