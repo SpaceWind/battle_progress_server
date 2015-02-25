@@ -25,12 +25,10 @@ ActiveRecord::Schema.define(version: 20150225094445) do
   end
 
   create_table "clan_relations", force: true do |t|
-    t.string   "type"
-    t.string   "name"
-    t.string   "string"
-    t.string   "hostile"
-    t.string   "text"
-    t.string   "friendly"
+    t.string   "rel_type"
+    t.string   "rel_name"
+    t.text     "hostile"
+    t.text     "friendly"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

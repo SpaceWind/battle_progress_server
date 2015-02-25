@@ -328,7 +328,7 @@ class AdminApiController < ApplicationController
 		status = 'OK'
 		friendly = nil
 		hostile = nil
-		relation = ClanRelation.find_by type: params[:relation_type], name: params[:relation_name]
+		relation = ClanRelation.find_by rel_type: params[:relation_type], rel_name: params[:relation_name]
 		if (relation)
 			friendly = relation.friendly
 			hostile = relation.hostile
@@ -344,7 +344,7 @@ class AdminApiController < ApplicationController
 		success = true
 		status = 'OK'
 		rel = nil
-		relation = ClanRelation.find_by type: params[:relation_type], name: params[:relation_name]
+		relation = ClanRelation.find_by rel_type: params[:relation_type], rel_name: params[:relation_name]
 		if (relation)
 			friendly = relation.friendly
 			hostile = relation.hostile
@@ -376,14 +376,14 @@ class AdminApiController < ApplicationController
 			user = User.find_by login: active_key.login, group: 'admins'
 			if (user)
 				relation = nil
-				foundRelation = ClanRelation.find_by name: params[:rel_name]
+				foundRelation = ClanRelation.find_by rel_name: params[:rel_name]
 				if (foundRelation)
 					relation = foundRelation
 				else
 					relation = ClanRelation.new
 				end
-				relation.type = params[:rel_type]
-				relation.name = params[:rel_name]
+				relation.rel_type = params[:rel_type]
+				relation.rel_name = params[:rel_name]
 				relation.friendly = params[:f]
 				relation.hostile = params[:h]
 				relation.save
