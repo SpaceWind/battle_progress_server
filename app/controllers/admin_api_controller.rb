@@ -322,4 +322,7 @@ class AdminApiController < ApplicationController
 				  'lib_vip' => faction_lib_vip, 'lib_tvp' => faction_lib_tvp, 'lib_prp' => faction_lib_prp}
 		render json: result
 	end
+	####################################################################################################
+	def getRelations
+	end
 end
