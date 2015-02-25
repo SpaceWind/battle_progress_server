@@ -391,13 +391,6 @@ class AdminApiController < ApplicationController
 				success = false
 				status = 'Incorrect User'
 			end
+		end
 	end
 end
-
-
-
-
-
-
-
-
