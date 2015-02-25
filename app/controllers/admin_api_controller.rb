@@ -75,7 +75,7 @@ class AdminApiController < ApplicationController
 		if (active_key)
 			user = User.find_by login: active_key.login, group: 'admins'
 			if (user)
-				find_person = Person.find_by person_name: params[:apikey]
+				find_person = Person.find_by person_name: params[:person_name]
 				if (find_person)
 					success = false
 					status = 'class with that name already exists'
