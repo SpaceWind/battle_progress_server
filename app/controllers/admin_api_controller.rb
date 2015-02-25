@@ -262,11 +262,24 @@ class AdminApiController < ApplicationController
 		active_classes = Person.all
 		classNames = Array.new
 		classDescriptions = Array.new
+		class_lib_imp = Array.new
+		class_lib_rop = Array.new
+		class_lib_dap = Array.new
+		class_lib_vip = Array.new
+		class_lib_tvp = Array.new
+		class_lib_prp = Array.new
 		active_classes.each {|person| 
 			classNames.push(person.person_name)
 			classDescriptions.push(person.description)
+			class_lib_imp.push(person.lib_imp)
+			class_lib_rop.push(person.lib_rop)
+			class_lib_dap.push(person.lib_dap)
+			class_lib_vip.push(person.lib_vip)
+			class_lib_tvp.push(person.lib_tvp)
+			class_lib_prp.push(person.lib_prp)
 		}
-		result = {'success' => true, 'status' => 'OK', 'classes' => classNames, 'descriptions' => classDescriptions}
+		result = {'success' => true, 'status' => 'OK', 'classes' => classNames, 'descriptions' => classDescriptions, 
+				  'lib_imp' => class_lib_imp,  'lib_rop' => class_lib_rop, 'lib_dap' => class_lib_dap, 'lib_vip' => class_lib_vip, 'lib_tvp' => class_lib_tvp, 'lib_prp' => class_lib_prp}
 		render json: result
 	end
 	
@@ -274,11 +287,25 @@ class AdminApiController < ApplicationController
 		active_factions = Faction.all
 		factionNames = Array.new
 		factionDescriptions = Array.new
+		faction_lib_imp = Array.new
+		faction_lib_rop = Array.new
+		faction_lib_dap = Array.new
+		faction_lib_vip = Array.new
+		faction_lib_tvp = Array.new
+		faction_lib_prp = Array.new
 		active_factions.each {|faction| 
 			factionNames.push(faction.faction_name)
 			factionDescriptions.push(faction.description)
+			faction_lib_imp.push(faction.lib_imp)
+			faction_lib_rop.push(faction.lib_rop)
+			faction_lib_dap.push(faction.lib_dap)
+			faction_lib_vip.push(faction.lib_vip)
+			faction_lib_tvp.push(faction.lib_tvp)
+			faction_lib_prp.push(faction.lib_prp)
 		}
-		result = {'success' => true, 'status' => 'OK', 'factions' => factionNames, 'descriptions' => factionDescriptions}
+		result = {'success' => true, 'status' => 'OK', 'factions' => factionNames, 'descriptions' => factionDescriptions,
+				  'lib_imp' => faction_lib_imp,  'lib_rop' => faction_lib_rop, 'lib_dap' => faction_lib_dap, 
+				  'lib_vip' => faction_lib_vip, 'lib_tvp' => faction_lib_tvp, 'lib_prp' => faction_lib_prp}
 		render json: result
 	end
 end
