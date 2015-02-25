@@ -387,7 +387,6 @@ class AdminApiController < ApplicationController
 				else
 					relation = ClanRelation.new
 				end
-				relation = ClanRelation.new
 				relation.rel_type = params[:rel_type]
 				relation.rel_name = params[:rel_name]
 				relation.friendly = params[:f]
