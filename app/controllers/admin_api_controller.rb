@@ -366,6 +366,10 @@ class AdminApiController < ApplicationController
 		render json: result
 	end
 	
+	def relList
+		rel = ClanRelation.all
+		render json: rel
+	end
 	def createRelation
 		success = true
 		status = 'OK'
