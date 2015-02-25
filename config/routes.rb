@@ -38,6 +38,7 @@ BattleFiftos::Application.routes.draw do
   get 'admin/class/appendDesc' => 'admin_api#classAppendDesc'
   
   get 'meta/relations' => 'admin_api#getRelations'
+  get 'meta/checkRelation' => 'admin_api#checkRelation'
   
   
   

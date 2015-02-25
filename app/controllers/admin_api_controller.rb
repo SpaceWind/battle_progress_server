@@ -339,4 +339,38 @@ class AdminApiController < ApplicationController
 		result = {'status' => status, 'success' => success, 'friendly' => friendly, 'hostile' => hostile}
 		render json: result
 	end
+	
+	def checkRelation
+		success = true
+		status = 'OK'
+		rel = nil
+		relation = ClanRelation.find_by type: params[:relation_type], name: params[:relation_name]
+		if (relation)
+			friendly = relation.friendly
+			hostile = relation.hostile
+			if friendly.include? params[:relate_to]
+				rel = 'friendly'
+			else
+				if hostile.include? params[:relate_to]
+					rel = 'hostile'
+				else
+					rel = 'neutral'
+				end
+			end
+		else
+			success = false
+			status = 'Relation is not found'
+			rel = 'neutral'
+		end
+		result = {'status' => status, 'success' => success, 'relation' => rel}
+		render json: result
+	end
 end
+
+
+
+
+
+
+
+
