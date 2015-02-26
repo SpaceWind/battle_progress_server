@@ -443,6 +443,7 @@ class AdminApiController < ApplicationController
 					specs.int = params[:int]
 				else
 					specs.int = 0
+				end
 				if (params[:mag])
 					specs.mag = params[:mag]
 				else
