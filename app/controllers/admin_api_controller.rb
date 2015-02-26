@@ -428,7 +428,7 @@ class AdminApiController < ApplicationController
 				else
 					specs = ClassSpecs.new
 				end
-				
+				specs.class_name = params[:class_name]
 				if (params[:str])
 					specs.str = params[:str]
 				else
