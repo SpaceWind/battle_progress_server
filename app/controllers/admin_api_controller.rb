@@ -483,7 +483,7 @@ class AdminApiController < ApplicationController
 		s = nil
 		specs = ClassSpecs.find_by class_name: params[:class_name]
 		if (specs)
-			s = 'str: ' + specs.str + ';dex: ' + specs.dex + ';mag: ' + specs.mag + ';int: '+ specs.int + ';tra: ' + specs.tra + ';vel: ' + specs.vel + ';hp: ' + specs.hp + ';mana: ' + specs.mana
+			s = 'str: ' + specs.str.to_s + ';dex: ' + specs.dex.to_s + ';mag: ' + specs.mag.to_s + ';int: '+ specs.int.to_s + ';tra: ' + specs.tra.to_s + ';vel: ' + specs.vel.to_s + ';hp: ' + specs.hp.to_s + ';mana: ' + specs.mana.to_s
 		else
 			success = false
 			status = 'Specs were not found'
