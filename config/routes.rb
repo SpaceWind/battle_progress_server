@@ -42,6 +42,7 @@ BattleFiftos::Application.routes.draw do
   get 'admin/createRelation' => 'admin_api#createRelation'
   
   get 'meta/rl' => 'admin_api#relList'
+  get 'meta/allspecs' => 'admin_api#allspecs'
 
   get 'meta/specs' => 'admin_api#getClassSpecs'
   get 'admin/class/setSpecs' => 'admin_api#setupClassSpecs'

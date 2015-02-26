@@ -492,4 +492,9 @@ class AdminApiController < ApplicationController
 		render json: result
 	end
 	
+	def allspecs
+		s = ClassSpecs.all
+		render json: s
+	end
+	
 end
