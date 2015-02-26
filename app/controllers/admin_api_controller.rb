@@ -380,6 +380,7 @@ class AdminApiController < ApplicationController
 		rel = ClanRelation.all
 		render json: rel
 	end
+	
 	def createRelation
 		success = true
 		status = 'OK'
@@ -409,4 +410,86 @@ class AdminApiController < ApplicationController
 		end
 		render json: {'success' => success, 'status' => status}
 	end
+	
+	################################################################################
+	def setupClassSpecs
+		success = true
+		status = 'OK'
+		active_key = ActiveKey.find_by apikey: params[:apikey]
+		user = nil
+		if (active_key)
+			user = User.find_by login: active_key.login, group: 'admins'
+			if (user)
+				specs = nil
+				foundSpecs = ClassSpecs.find_by class_name: params[:class_name]
+				if (foundSpecs)
+					status = 'overwriting specs'
+					specs = foundSpecs
+				else
+					specs = ClassSpecs.new
+				end
+				
+				if (params[:str])
+					specs.str = params[:str]
+				else
+					specs.str = 0
+				end
+				if (params[:dex])
+					specs.dex = params[:dex]
+				else
+					specs.dex = 0
+				end
+				if (params[:mag])
+					specs.mag = params[:mag]
+				else
+					specs.mag = 0
+				end
+				if (params[:tra])
+					specs.tra = params[:tra]
+				else
+					specs.tra = 0
+				end
+				if (params[:vel])
+					specs.vel = params[:vel]
+				else
+					specs.vel = 0
+				end
+				if (params[:hp])
+					specs.hp = params[:hp]
+				else
+					specs.hp = 0
+				end
+				if (params[:mana])
+					specs.mana = params[:mana]
+				else
+					specs.mana = 0
+				end
+				specs.save
+			else
+				success = false
+				status = 'Incorrect User'
+			end
+		else
+			success = false
+			status = 'Inactive APIKEY'
+		end
+		result = {'success' => success, 'status' => status}
+		render json: result
+	end
+
+	def getClassSpecs
+		success = true
+		status = 'OK'
+		s = nil
+		specs = ClassSpecs.find_by class_name: params[:class_name]
+		if (specs)
+			s = 'str: ' + specs.str + ';dex: ' + specs.dex + ';mag: ' + specs.mag + ';int: '+ specs.int + ';tra: ' + specs.tra + ';vel: ' + specs.vel + ';hp: ' + specs.hp + ';mana: ' + specs.mana
+		else
+			success = false
+			status = 'Specs were not found'
+		end
+		result = {'success' => success, 'status' => status, 'specs' => s}
+		render json: result
+	end
+	
 end
