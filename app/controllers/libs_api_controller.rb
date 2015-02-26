@@ -241,7 +241,9 @@ class LibsApiController < ApplicationController
 		lib.value = 'А еще герой был благословлен небесами и самолично богом, ему был дан дар колдовать столько, сколько его душа пожелает.'
 		lib.save
 		
-		
+		alllibs = Lib.all
+		render json: alllibs
+
 	end
 	
 	
@@ -258,10 +260,13 @@ class LibsApiController < ApplicationController
 		text = strItem.value + " " + dexItem.value + " " + magItem.value + " " + intItem.value + " " + traItem.value
 		if (hpItem)
 			text = text + " " + hpItem.value
+		end
 		if (manaItem)
 			text = text + " " + manaItem.value
+		end
 		text = text + " " + velItem.value
 		
 		result = {'success' => true, 'status' => 'OK', 'text' => text}
+		render json: result
 	end
 end
