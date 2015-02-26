@@ -60,6 +60,11 @@ class AdminApiController < ApplicationController
 					faction.lib_prp = params[:lib_prp]
 					faction.description = params[:description]
 					faction.save
+					
+					relation = ClanRelation.new
+					relation.rel_type = 'faction'
+					relation.rel_name = params[:faction_name]
+					relation.save
 				end
 			else
 				success = false
@@ -104,6 +109,11 @@ class AdminApiController < ApplicationController
 					person.lib_prp = params[:lib_prp]
 					person.description = params[:description]
 					person.save
+					
+					relation = ClanRelation.new
+					relation.rel_type = 'class'
+					relation.rel_name = params[:person_name]
+					relation.save
 				end
 			else
 				success = false
