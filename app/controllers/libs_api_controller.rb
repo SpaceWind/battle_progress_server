@@ -248,14 +248,14 @@ class LibsApiController < ApplicationController
 	
 	
 	def getHeroDesc
-		strItem = Lib.find_by token: 'heroDesc', item = 'str:'+params[:str]
-		dexItem = Lib.find_by token: 'heroDesc', item = 'dex:'+params[:dex]
-		magItem = Lib.find_by token: 'heroDesc', item = 'mag:'+params[:mag]
-		intItem = Lib.find_by token: 'heroDesc', item = 'int:'+params[:int]
-		traItem = Lib.find_by token: 'heroDesc', item = 'tra:'+params[:tra]
-		velItem = Lib.find_by token: 'heroDesc', item = 'vel:'+params[:vel]
-		manaItem = Lib.find_by token: 'heroDesc', item = 'mana:'+params[:mana]
-		hpItem = Lib.find_by token: 'heroDesc', item = 'hp:'+params[:hp]
+		strItem = Lib.find_by token: 'heroDesc', item: 'str:'+params[:str]
+		dexItem = Lib.find_by token: 'heroDesc', item: 'dex:'+params[:dex]
+		magItem = Lib.find_by token: 'heroDesc', item: 'mag:'+params[:mag]
+		intItem = Lib.find_by token: 'heroDesc', item: 'int:'+params[:int]
+		traItem = Lib.find_by token: 'heroDesc', item: 'tra:'+params[:tra]
+		velItem = Lib.find_by token: 'heroDesc', item: 'vel:'+params[:vel]
+		manaItem = Lib.find_by token: 'heroDesc', item: 'mana:'+params[:mana]
+		hpItem = Lib.find_by token: 'heroDesc', item: 'hp:'+params[:hp]
 		
 		text = strItem.value + " " + dexItem.value + " " + magItem.value + " " + intItem.value + " " + traItem.value
 		if (hpItem)
