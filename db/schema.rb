@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20150226084408) do
     t.integer  "str"
     t.integer  "dex"
     t.integer  "mag"
+    t.integer  "int"
     t.integer  "tra"
     t.integer  "vel"
     t.integer  "hp"
