@@ -38,10 +38,10 @@ ActiveRecord::Schema.define(version: 20150226084408) do
     t.integer  "str"
     t.integer  "dex"
     t.integer  "mag"
-    t.string   "tra"
+    t.integer  "tra"
     t.integer  "vel"
     t.integer  "hp"
-    t.string   "mana"
+    t.integer  "mana"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
