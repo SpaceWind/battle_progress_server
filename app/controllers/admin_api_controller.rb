@@ -439,6 +439,10 @@ class AdminApiController < ApplicationController
 				else
 					specs.dex = 0
 				end
+				if (params[:int])
+					specs.int = params[:int]
+				else
+					specs.int = 0
 				if (params[:mag])
 					specs.mag = params[:mag]
 				else
