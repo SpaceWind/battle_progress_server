@@ -25,6 +25,7 @@ BattleFiftos::Application.routes.draw do
   get 'ping' => 'infoapi#ping'
   
   get 'hero/roll' => 'infoapi#rollHero'
+  get 'libs/setup' => 'libs_api#setupLibs'
   
   get 'admin/promote' => 'admin_api#promote'
   get 'admin/check'	=> 'admin_api#check'
