@@ -24,6 +24,8 @@ BattleFiftos::Application.routes.draw do
   get 'userExists' => 'infoapi#userExists'
   get 'ping' => 'infoapi#ping'
   
+  get 'hero/roll' => 'infoapi#rollHero'
+  
   get 'admin/promote' => 'admin_api#promote'
   get 'admin/check'	=> 'admin_api#check'
   get 'admin/newFaction' => 'admin_api#newFaction'
