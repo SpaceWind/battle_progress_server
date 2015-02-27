@@ -1,7 +1,7 @@
 class LibsApiController < ApplicationController
 	def setupLibs
 	
-		libstoClear = Lib.All
+		libstoClear = Lib.all
 		libstoClear.destroy
 		
 		lib = Lib.new
