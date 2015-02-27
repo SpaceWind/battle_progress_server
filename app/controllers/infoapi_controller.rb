@@ -132,20 +132,37 @@ class InfoapiController < ApplicationController
 		result_hp  = 60
 		result_mana = 60
 		result_text = ''
+		result_value = 0
 		
 		if (active_key)
 			user = User.find_by login: active_key.login
 			if (user)
 				specs = ClassSpecs.find_by class_name: params[:class_name]
 				if (specs)
-					result_str += specs.str*2 + rand(7) - 3
-					result_dex += specs.dex*2 + rand(7) - 3
-					result_mag += specs.mag*2 + rand(7) - 3
-					result_int += specs.int*2 + rand(7) - 3
-					result_tra += specs.tra*2 + rand(7) - 3
-					result_vel += specs.vel*2 + rand(7) - 3
-					result_hp += specs.hp*2 + rand(31) - 15
-					result_mana += specs.mana*2 + rand(31) - 15
+					current_random_value = random(7) - 4
+					result_value += current_random_value
+					result_str += specs.str*2 + current_random_value
+					current_random_value = random(7) - 4
+					result_value += current_random_value
+					result_dex += specs.dex*2 + current_random_value
+					current_random_value = random(7) - 4
+					result_value += current_random_value
+					result_mag += specs.mag*2 + current_random_value
+					current_random_value = random(7) - 4
+					result_value += current_random_value
+					result_int += specs.int*2 + current_random_value
+					current_random_value = random(7) - 4
+					result_value += current_random_value
+					result_tra += specs.tra*2 + current_random_value
+					current_random_value = random(7) - 4
+					result_value += current_random_value
+					result_vel += specs.vel*2 + current_random_value
+					current_random_value = random(31) - 16
+					result_value += current_random_value / 5
+					result_hp += specs.hp*2 + current_random_value
+					current_random_value = random(31) - 16
+					result_value += current_random_value / 5
+					result_mana += specs.mana*2 + current_random_value
 					if (result_str < 0)
 						result_str = 0
 					end
@@ -313,7 +330,7 @@ class InfoapiController < ApplicationController
 						end
 					end
 					result_text += ' '
-					if (result_hp <= 33)
+					if (result_hp <= 45)
 						hp_text = Lib.find_by token:'heroDesc', item: 'hp:-1'
 						result_text += hp_text.value + ' '
 					else
@@ -325,7 +342,7 @@ class InfoapiController < ApplicationController
 						end
 					end
 					
-					if (result_mana <= 33)
+					if (result_mana <= 45)
 						mana_text = Lib.find_by token:'heroDesc', item: 'mana:-1'
 						result_text += mana_text.value + ' '
 					else
@@ -369,8 +386,8 @@ class InfoapiController < ApplicationController
 			end
 		end
 
-		result = {'success' => success, 'status' => status, 'str' => result_str, 'dex' => result_dex, 'mag' => result_mag, 
-		  'int'=> result_int, 'tra' => result_tra, 'vel' => result_tra, 'hp' => result_hp, 'mana' => result_mana, 'desc' => result_text}
+		result = {'success' => success, 'status' => status, 'quality' =>result_value, 'str' => result_str, 'dex' => result_dex, 'mag' => result_mag, 
+		  'int'=> result_int, 'tra' => result_tra, 'vel' => result_vel, 'hp' => result_hp, 'mana' => result_mana, 'desc' => result_text}
 		render json: result
 	end
 end
