@@ -2,7 +2,7 @@ class LibsApiController < ApplicationController
 	def setupLibs
 	
 		libstoClear = Lib.all
-		libstoClear.destroy
+		libstoClear.delete_all
 		
 		lib = Lib.new
 		lib.token = 'heroDesc'
