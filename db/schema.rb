@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226134123) do
+ActiveRecord::Schema.define(version: 20150227074335) do
 
   create_table "active_keys", force: true do |t|
     t.string   "apikey"
@@ -73,6 +73,30 @@ ActiveRecord::Schema.define(version: 20150226134123) do
     t.integer  "y_pos"
     t.string   "hclass"
     t.string   "hrace"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "hero_stats", force: true do |t|
+    t.string   "heroid"
+    t.integer  "str"
+    t.integer  "dex"
+    t.integer  "mag"
+    t.integer  "int"
+    t.integer  "tra"
+    t.integer  "vel"
+    t.integer  "max_hp"
+    t.integer  "max_mana"
+    t.integer  "current_hp"
+    t.integer  "current_mana"
+    t.integer  "start_str"
+    t.integer  "start_dex"
+    t.integer  "start_mag"
+    t.integer  "start_int"
+    t.integer  "start_vel"
+    t.integer  "start_hp"
+    t.integer  "start_mana"
+    t.text     "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
