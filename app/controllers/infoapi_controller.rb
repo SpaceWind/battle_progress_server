@@ -139,28 +139,28 @@ class InfoapiController < ApplicationController
 			if (user)
 				specs = ClassSpecs.find_by class_name: params[:class_name]
 				if (specs)
-					current_random_value = random(7) - 4
+					current_random_value = rand(7) - 4
 					result_value += current_random_value
 					result_str += specs.str*2 + current_random_value
-					current_random_value = random(7) - 4
+					current_random_value = rand(7) - 4
 					result_value += current_random_value
 					result_dex += specs.dex*2 + current_random_value
-					current_random_value = random(7) - 4
+					current_random_value = rand(7) - 4
 					result_value += current_random_value
 					result_mag += specs.mag*2 + current_random_value
-					current_random_value = random(7) - 4
+					current_random_value = rand(7) - 4
 					result_value += current_random_value
 					result_int += specs.int*2 + current_random_value
-					current_random_value = random(7) - 4
+					current_random_value = rand(7) - 4
 					result_value += current_random_value
 					result_tra += specs.tra*2 + current_random_value
-					current_random_value = random(7) - 4
+					current_random_value = rand(7) - 4
 					result_value += current_random_value
 					result_vel += specs.vel*2 + current_random_value
-					current_random_value = random(31) - 16
+					current_random_value = rand(31) - 16
 					result_value += current_random_value / 5
 					result_hp += specs.hp*2 + current_random_value
-					current_random_value = random(31) - 16
+					current_random_value = rand(31) - 16
 					result_value += current_random_value / 5
 					result_mana += specs.mana*2 + current_random_value
 					if (result_str < 0)
