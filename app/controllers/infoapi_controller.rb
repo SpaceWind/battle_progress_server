@@ -172,26 +172,26 @@ class InfoapiController < ApplicationController
 					end
 					
 					if (result_str <= 3)
-						str_text = Lib.find_by token:'heroDesc', item = 'str:-2'
+						str_text = Lib.find_by token:'heroDesc', item: 'str:-2'
 						result_text += str_text.value
 					else
 						if (result_str >=4 && result_str <=6)
-							str_text = Lib.find_by token:'heroDesc', item = 'str:-1'
+							str_text = Lib.find_by token:'heroDesc', item: 'str:-1'
 							result_text += str_text.value
 						else
 							if (result_str >= 7 && result_str <=9)
-								str_text = Lib.find_by token:'heroDesc', item = 'str:0'
+								str_text = Lib.find_by token:'heroDesc', item: 'str:0'
 								result_text += str_text.value
 							else
 								if (result_str >= 10 && result_str <=13)
-									str_text = Lib.find_by token:'heroDesc', item = 'str:1'
+									str_text = Lib.find_by token:'heroDesc', item: 'str:1'
 									result_text += str_text.value
 								else
 									if (result_str >= 14 && result_str <=18)
-										str_text = Lib.find_by token:'heroDesc', item = 'str:2'
+										str_text = Lib.find_by token:'heroDesc', item: 'str:2'
 										result_text += str_text.value
 									else
-										str_text = Lib.find_by token:'heroDesc', item = 'str:3'
+										str_text = Lib.find_by token:'heroDesc', item: 'str:3'
 										result_text += str_text.value
 									end
 								end
@@ -200,26 +200,26 @@ class InfoapiController < ApplicationController
 					end
 					result_text += ' '
 					if (result_dex <= 3)
-						dex_text = Lib.find_by token:'heroDesc', item = 'dex:-2'
+						dex_text = Lib.find_by token:'heroDesc', item: 'dex:-2'
 						result_text += dex_text.value
 					else
 						if (result_dex >=4 && result_dex <=6)
-							dex_text = Lib.find_by token:'heroDesc', item = 'dex:-1'
+							dex_text = Lib.find_by token:'heroDesc', item: 'dex:-1'
 							result_text += dex_text.value
 						else
 							if (result_dex >= 7 && result_dex <=9)
-								dex_text = Lib.find_by token:'heroDesc', item = 'dex:0'
+								dex_text = Lib.find_by token:'heroDesc', item: 'dex:0'
 								result_text += dex_text.value
 							else
 								if (result_dex >= 10 && result_dex <=13)
-									dex_text = Lib.find_by token:'heroDesc', item = 'dex:1'
+									dex_text = Lib.find_by token:'heroDesc', item: 'dex:1'
 									result_text += dex_text.value
 								else
 									if (result_dex >= 14 && result_dex <=18)
-										dex_text = Lib.find_by token:'heroDesc', item = 'dex:2'
+										dex_text = Lib.find_by token:'heroDesc', item: 'dex:2'
 										result_text += dex_text.value
 									else
-										dex_text = Lib.find_by token:'heroDesc', item = 'dex:3'
+										dex_text = Lib.find_by token:'heroDesc', item: 'dex:3'
 										result_text += dex_text.value
 									end
 								end
@@ -228,26 +228,26 @@ class InfoapiController < ApplicationController
 					end
 					result_text += ' '
 					if (result_mag <= 3)
-						mag_text = Lib.find_by token:'heroDesc', item = 'mag:-2'
+						mag_text = Lib.find_by token:'heroDesc', item: 'mag:-2'
 						result_text += mag_text.value
 					else
 						if (result_mag >=4 && result_mag <=6)
-							mag_text = Lib.find_by token:'heroDesc', item = 'mag:-1'
+							mag_text = Lib.find_by token:'heroDesc', item: 'mag:-1'
 							result_text += mag_text.value
 						else
 							if (result_mag >= 7 && result_mag <=9)
-								mag_text = Lib.find_by token:'heroDesc', item = 'mag:0'
+								mag_text = Lib.find_by token:'heroDesc', item: 'mag:0'
 								result_text += mag_text.value
 							else
 								if (result_mag >= 10 && result_mag <=13)
-									mag_text = Lib.find_by token:'heroDesc', item = 'mag:1'
+									mag_text = Lib.find_by token:'heroDesc', item: 'mag:1'
 									result_text += mag_text.value
 								else
 									if (result_mag >= 14 && result_mag <=18)
-										mag_text = Lib.find_by token:'heroDesc', item = 'mag:2'
+										mag_text = Lib.find_by token:'heroDesc', item: 'mag:2'
 										result_text += mag_text.value
 									else
-										mag_text = Lib.find_by token:'heroDesc', item = 'mag:3'
+										mag_text = Lib.find_by token:'heroDesc', item: 'mag:3'
 										result_text += mag_text.value
 									end
 								end
@@ -257,26 +257,26 @@ class InfoapiController < ApplicationController
 					result_text += ' '
 					
 					if (result_int <= 3)
-						int_text = Lib.find_by token:'heroDesc', item = 'int:-2'
+						int_text = Lib.find_by token:'heroDesc', item: 'int:-2'
 						result_text += int_text.value
 					else
 						if (result_int >=4 && result_int <=6)
-							int_text = Lib.find_by token:'heroDesc', item = 'int:-1'
+							int_text = Lib.find_by token:'heroDesc', item: 'int:-1'
 							result_text += int_text.value
 						else
 							if (result_int >= 7 && result_int <=9)
-								int_text = Lib.find_by token:'heroDesc', item = 'int:0'
+								int_text = Lib.find_by token:'heroDesc', item: 'int:0'
 								result_text += int_text.value
 							else
 								if (result_int >= 10 && result_int <=13)
-									int_text = Lib.find_by token:'heroDesc', item = 'int:1'
+									int_text = Lib.find_by token:'heroDesc', item: 'int:1'
 									result_text += int_text.value
 								else
 									if (result_int >= 14 && result_int <=18)
-										int_text = Lib.find_by token:'heroDesc', item = 'int:2'
+										int_text = Lib.find_by token:'heroDesc', item: 'int:2'
 										result_text += int_text.value
 									else
-										int_text = Lib.find_by token:'heroDesc', item = 'int:3'
+										int_text = Lib.find_by token:'heroDesc', item: 'int:3'
 										result_text += int_text.value
 									end
 								end
@@ -286,26 +286,26 @@ class InfoapiController < ApplicationController
 					result_text += ' '
 					
 					if (result_tra <= 3)
-						tra_text = Lib.find_by token:'heroDesc', item = 'tra:-2'
+						tra_text = Lib.find_by token:'heroDesc', item: 'tra:-2'
 						result_text += tra_text.value
 					else
 						if (result_tra >=4 && result_tra <=6)
-							tra_text = Lib.find_by token:'heroDesc', item = 'tra:-1'
+							tra_text = Lib.find_by token:'heroDesc', item: 'tra:-1'
 							result_text += tra_text.value
 						else
 							if (result_tra >= 7 && result_tra <=9)
-								tra_text = Lib.find_by token:'heroDesc', item = 'tra:0'
+								tra_text = Lib.find_by token:'heroDesc', item: 'tra:0'
 								result_text += tra_text.value
 							else
 								if (result_tra >= 10 && result_tra <=13)
-									tra_text = Lib.find_by token:'heroDesc', item = 'tra:1'
+									tra_text = Lib.find_by token:'heroDesc', item: 'tra:1'
 									result_text += tra_text.value
 								else
 									if (result_tra >= 14 && result_tra <=18)
-										tra_text = Lib.find_by token:'heroDesc', item = 'tra:2'
+										tra_text = Lib.find_by token:'heroDesc', item: 'tra:2'
 										result_text += tra_text.value
 									else
-										tra_text = Lib.find_by token:'heroDesc', item = 'tra:3'
+										tra_text = Lib.find_by token:'heroDesc', item: 'tra:3'
 										result_text += tra_text.value
 									end
 								end
@@ -314,11 +314,11 @@ class InfoapiController < ApplicationController
 					end
 					result_text += ' '
 					if (result_hp <= 33)
-						hp_text = Lib.find_by token:'heroDesc', item = 'hp:-1'
+						hp_text = Lib.find_by token:'heroDesc', item: 'hp:-1'
 						result_text += hp_text.value + ' '
 					else
 						if (result_hp >=75)
-							hp_text = Lib.find_by token:'heroDesc', item = 'hp:1'
+							hp_text = Lib.find_by token:'heroDesc', item: 'hp:1'
 							result_text += hp_text.value + ' '
 						else
 							result_text += ' '
@@ -326,11 +326,11 @@ class InfoapiController < ApplicationController
 					end
 					
 					if (result_mana <= 33)
-						mana_text = Lib.find_by token:'heroDesc', item = 'mana:-1'
+						mana_text = Lib.find_by token:'heroDesc', item: 'mana:-1'
 						result_text += mana_text.value + ' '
 					else
 						if (result_mana >=75)
-							mana_text = Lib.find_by token:'heroDesc', item = 'mana:1'
+							mana_text = Lib.find_by token:'heroDesc', item: 'mana:1'
 							result_text += mana_text.value + ' '
 						else
 							result_text += ' '
@@ -338,26 +338,26 @@ class InfoapiController < ApplicationController
 					end
 					
 					if (result_vel <= 3)
-						vel_text = Lib.find_by token:'heroDesc', item = 'vel:-2'
+						vel_text = Lib.find_by token:'heroDesc', item: 'vel:-2'
 						result_text += vel_text.value
 					else
 						if (result_vel >=4 && result_vel <=6)
-							vel_text = Lib.find_by token:'heroDesc', item = 'vel:-1'
+							vel_text = Lib.find_by token:'heroDesc', item: 'vel:-1'
 							result_text += vel_text.value
 						else
 							if (result_vel >= 7 && result_vel <=9)
-								vel_text = Lib.find_by token:'heroDesc', item = 'vel:0'
+								vel_text = Lib.find_by token:'heroDesc', item: 'vel:0'
 								result_text += vel_text.value
 							else
 								if (result_vel >= 10 && result_vel <=13)
-									vel_text = Lib.find_by token:'heroDesc', item = 'vel:1'
+									vel_text = Lib.find_by token:'heroDesc', item: 'vel:1'
 									result_text += vel_text.value
 								else
 									if (result_vel >= 14 && result_vel <=18)
-										vel_text = Lib.find_by token:'heroDesc', item = 'vel:2'
+										vel_text = Lib.find_by token:'heroDesc', item: 'vel:2'
 										result_text += vel_text.value
 									else
-										vel_text = Lib.find_by token:'heroDesc', item = 'vel:3'
+										vel_text = Lib.find_by token:'heroDesc', item: 'vel:3'
 										result_text += vel_text.value
 									end
 								end
