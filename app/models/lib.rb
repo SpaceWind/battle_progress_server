@@ -1,5 +1,5 @@
 class Lib < ActiveRecord::Base
-	def getHeroDesc(statPrefix, genderPrefix, value)
+	def self.getHeroDesc(statPrefix, genderPrefix, value)
 		result_text = ''
 		if (value <= 3)
 			str_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':-2'
@@ -31,7 +31,7 @@ class Lib < ActiveRecord::Base
 		result_text
 	end
 	
-	def getHeroDescMainStats(statPrefix, genderPrefix, value)
+	def self.getHeroDescMainStats(statPrefix, genderPrefix, value)
 		result_text = ''
 		if (value <= 45)
 			hp_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':-1'
