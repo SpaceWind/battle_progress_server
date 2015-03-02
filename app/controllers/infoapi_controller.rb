@@ -308,6 +308,7 @@ class InfoapiController < ApplicationController
 			status = 'Wrong or Inactive APIKEY'
 		end
 		result = {'success' => success, 'status' => status}
+		render json: result
 	end
 end
 
