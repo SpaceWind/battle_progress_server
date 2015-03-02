@@ -117,53 +117,6 @@ class InfoapiController < ApplicationController
   end
   
 
-	def getHeroDesc(statPrefix, genderPrefix, value)
-		result_text = ''
-		if (value <= 3)
-			str_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':-2'
-			result_text += str_text.value
-		else
-			if (value >=4 && value <=6)
-				str_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':-1'
-				result_text += str_text.value
-			else
-				if (value >= 7 && value <=9)
-					str_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':0'
-					result_text += str_text.value
-				else
-					if (value >= 10 && value <=13)
-						str_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':1'
-						result_text += str_text.value
-					else
-						if (value >= 14 && value <=18)
-							str_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':2'
-							result_text += str_text.value
-						else
-							str_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':3'
-							result_text += str_text.value
-						end
-					end
-				end
-			end
-		end
-		result_text
-	end
-	
-	def getHeroDescMainStats(statPrefix, genderPrefix, value)
-		result_text = ''
-		if (value <= 45)
-			hp_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':-1'
-			result_text += hp_text.value
-		else
-			if (result_hp >=75)
-				hp_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':1'
-				result_text += hp_text.value + ' '
-			else
-				result_text += ' '
-			end
-		end
-		result_text
-	end
 	
 	def rollHero
 		success = true
@@ -239,14 +192,14 @@ class InfoapiController < ApplicationController
 						result_mana = 0
 					end
 					
-					result_text += getHeroDesc('str', gender_prefix, result_str) + ' '
-					result_text += getHeroDesc('dex', gender_prefix, result_dex) + ' '
-					result_text += getHeroDesc('mag', gender_prefix, result_mag) + ' '
-					result_text += getHeroDesc('int', gender_prefix, result_int) + ' '
-					result_text += getHeroDesc('tra', gender_prefix, result_tra) + ' '
-					result_text += getHeroDescMainStats('hp', gender_prefix, result_hp) + ' '
-					result_text += getHeroDescMainStats('mana', gender_prefix, result_mana) + ' '
-					result_text += getHeroDesc('vel', gender_prefix, result_vel)
+					result_text += Lib.getHeroDesc('str', gender_prefix, result_str) + ' '
+					result_text += Lib.getHeroDesc('dex', gender_prefix, result_dex) + ' '
+					result_text += Lib.getHeroDesc('mag', gender_prefix, result_mag) + ' '
+					result_text += Lib.getHeroDesc('int', gender_prefix, result_int) + ' '
+					result_text += Lib.getHeroDesc('tra', gender_prefix, result_tra) + ' '
+					result_text += Lib.getHeroDescMainStats('hp', gender_prefix, result_hp) + ' '
+					result_text += Lib.getHeroDescMainStats('mana', gender_prefix, result_mana) + ' '
+					result_text += Lib.getHeroDesc('vel', gender_prefix, result_vel)
 				end
 			end
 		end
