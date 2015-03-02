@@ -210,7 +210,7 @@ class InfoapiController < ApplicationController
 					
 					###################################################################################
 					if (active_key.rolled_heroid)
-						prev_h_desc = HDescriptor.find_by heroid: active_key.rolled_heroid
+						prev_h_desc = HDescriptor.find_by hid: active_key.rolled_heroid
 						prev_h_desc.destroy
 						prev_h_stats = HeroStats.find_by heroid: active_key.rolled_heroid
 						prev_h_stats.destroy
@@ -275,7 +275,7 @@ class InfoapiController < ApplicationController
 			user = User.find_by login: active_key.login
 			if (user)
 				if (active_key.rolled_heroid)
-					hd = HDescriptor.find_by heroid: active_key.rolled_heroid
+					hd = HDescriptor.find_by hid: active_key.rolled_heroid
 					hd.hero_name = params[:name]
 					hd.mood = 0
 					hd.lvl = 1
