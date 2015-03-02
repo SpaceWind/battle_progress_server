@@ -200,13 +200,105 @@ class InfoapiController < ApplicationController
 					result_text += Lib.getHeroDescMainStats('hp', gender_prefix, result_hp) + ' '
 					result_text += Lib.getHeroDescMainStats('mana', gender_prefix, result_mana) + ' '
 					result_text += Lib.getHeroDesc('vel', gender_prefix, result_vel)
+					
+					
+					
+					###################################################################################
+					if (active_key.rolled_heroid)
+						prev_h_desc = HDescriptor.find_by heroid: active_key.rolled_heroid
+						prev_h_desc.destroy
+						prev_h_stats = HeroStats.find_by heroid: active_key.rolled_heroid
+						prev_h_stats.destroy
+					end
+					gen_heroid = rand(36**16).to_s(36)	
+					t = HDescriptor.new
+					t.hid = gen_heroid
+					t.hclass = params[:class_name]
+					t.save
+					
+					gen_herostats = HeroStats.new
+					
+					gen_herostats.str = result_str
+					gen_herostats.dex = result_dex
+					gen_herostats.mag = result_mag
+					gen_herostats.int = result_int
+					gen_herostats.tra = result_tra
+					gen_herostats.vel = result_vel
+					gen_herostats.current_hp = result_hp
+					gen_herostats.current_mana = result_mana
+					gen_herostats.max_hp = result_hp
+					gen_herostats.max_mana = result_mana
+					
+				    gen_herostats.start_str = result_str
+					gen_herostats.start_dex = result_dex
+					gen_herostats.start_mag = result_mag
+					gen_herostats.start_int = result_int
+					gen_herostats.start_tra = result_tra
+					gen_herostats.start_vel = result_vel
+					gen_herostats.start_hp = result_hp
+					gen_herostats.start_mana = result_mana
+					gen_herostats.text = result_text
+					
+					gen_herostats.save
+					active_key.rolled_heroid = gen_heroid
+					active_key.save
+				else
+					success = false
+					status = 'Specs Was not found for class'
 				end
+			else
+				success = false
+				status = 'User assinged to this APIKEY was not found'
 			end
+		else
+			success = false
+			status = 'Wrong or Inactive APIKEY'
 		end
+		
 
 		result = {'success' => success, 'status' => status, 'quality' =>result_value, 'str' => result_str, 'dex' => result_dex, 'mag' => result_mag, 
-		  'int'=> result_int, 'tra' => result_tra, 'vel' => result_vel, 'hp' => result_hp, 'mana' => result_mana, 'desc' => result_text}
+				  'int'=> result_int, 'tra' => result_tra, 'vel' => result_vel, 'hp' => result_hp, 'mana' => result_mana, 'desc' => result_text}
 		render json: result
+	end
+	
+	def saveRolledChamp
+		success = true;
+		status = 'OK'
+		active_key = ActiveKey.find_by apikey: params[:apikey]
+		user = nil
+		if (active_key)
+			user = User.find_by login: active_key.login
+			if (user)
+				if (active_key.rolled_heroid)
+					hd = HDescriptor.find_by heroid: active_key.rolled_heroid
+					hd.hero_name = params[:name]
+					hd.mood = 0
+					hd.lvl = 1
+					hd.pack_max_size = 30
+					hd.experience = 0
+					hd.exp_to_next_lvl = 1000
+					hd.hrace = params[:faction]
+					hd.save
+					
+					uxh = UserXHero.new
+					uxh.login = user.login
+					uxh.heroid = active_key.rolled_heroid
+					uxh.save
+					active_key.rolled_heroid = nil
+					active_key.save
+				else
+					success = false
+					status = 'User didnt roll champ'
+				end
+			else
+				success = false
+				status = 'User assigned to this APIKEY was not found'
+			end
+		else
+			success = false
+			status = 'Wrong or Inactive APIKEY'
+		end
+		result = {'success' => success, 'status' => status}
 	end
 end
 
