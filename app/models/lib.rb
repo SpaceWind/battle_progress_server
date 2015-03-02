@@ -37,7 +37,7 @@ class Lib < ActiveRecord::Base
 			hp_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':-1'
 			result_text += hp_text.value
 		else
-			if (result_hp >=75)
+			if (value >=75)
 				hp_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':1'
 				result_text += hp_text.value + ' '
 			else
