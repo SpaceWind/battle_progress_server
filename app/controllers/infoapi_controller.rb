@@ -42,11 +42,16 @@ class InfoapiController < ApplicationController
 		result = {'success' => false, 'status' => 'user already exists'}
 		render json: result
 	else
+		userCount = User.count
 		user = User.new
 		user.login = params[:login]
 		user.password = Digest::SHA2.hexdigest(params[:pass])
 		user.realname = params[:realname]
-		user.group = 'players'
+		if (userCount == 0)
+			user.group = 'admins'
+		else
+			user.group = 'players'
+		end
 		user.save
 		result = {'success' => true, 'status'=> 'user created'}
 		render json: result
