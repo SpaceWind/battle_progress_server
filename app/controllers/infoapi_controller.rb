@@ -117,6 +117,53 @@ class InfoapiController < ApplicationController
   end
   
 
+	def self.getHeroDesc(statPrefix, genderPrefix, value)
+		result_text = ''
+		if (value <= 3)
+			str_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':-2'
+			result_text += str_text.value
+		else
+			if (value >=4 && value <=6)
+				str_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':-1'
+				result_text += str_text.value
+			else
+				if (value >= 7 && value <=9)
+					str_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':0'
+					result_text += str_text.value
+				else
+					if (value >= 10 && value <=13)
+						str_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':1'
+						result_text += str_text.value
+					else
+						if (value >= 14 && value <=18)
+							str_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':2'
+							result_text += str_text.value
+						else
+							str_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':3'
+							result_text += str_text.value
+						end
+					end
+				end
+			end
+		end
+		result_text
+	end
+	
+	def self.getHeroDescMainStats(statPrefix, genderPrefix, value)
+		result_text = ''
+		if (value <= 45)
+			hp_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':-1'
+			result_text += hp_text.value
+		else
+			if (result_hp >=75)
+				hp_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':1'
+				result_text += hp_text.value + ' '
+			else
+				result_text += ' '
+			end
+		end
+		result_text
+	end
 	
 	def rollHero
 		success = true
@@ -192,200 +239,14 @@ class InfoapiController < ApplicationController
 						result_mana = 0
 					end
 					
-					if (result_str <= 3)
-						str_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'str:-2'
-						result_text += str_text.value
-					else
-						if (result_str >=4 && result_str <=6)
-							str_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'str:-1'
-							result_text += str_text.value
-						else
-							if (result_str >= 7 && result_str <=9)
-								str_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'str:0'
-								result_text += str_text.value
-							else
-								if (result_str >= 10 && result_str <=13)
-									str_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'str:1'
-									result_text += str_text.value
-								else
-									if (result_str >= 14 && result_str <=18)
-										str_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'str:2'
-										result_text += str_text.value
-									else
-										str_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'str:3'
-										result_text += str_text.value
-									end
-								end
-							end
-						end
-					end
-					result_text += ' '
-					if (result_dex <= 3)
-						dex_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'dex:-2'
-						result_text += dex_text.value
-					else
-						if (result_dex >=4 && result_dex <=6)
-							dex_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'dex:-1'
-							result_text += dex_text.value
-						else
-							if (result_dex >= 7 && result_dex <=9)
-								dex_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'dex:0'
-								result_text += dex_text.value
-							else
-								if (result_dex >= 10 && result_dex <=13)
-									dex_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'dex:1'
-									result_text += dex_text.value
-								else
-									if (result_dex >= 14 && result_dex <=18)
-										dex_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'dex:2'
-										result_text += dex_text.value
-									else
-										dex_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'dex:3'
-										result_text += dex_text.value
-									end
-								end
-							end
-						end
-					end
-					result_text += ' '
-					if (result_mag <= 3)
-						mag_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'mag:-2'
-						result_text += mag_text.value
-					else
-						if (result_mag >=4 && result_mag <=6)
-							mag_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'mag:-1'
-							result_text += mag_text.value
-						else
-							if (result_mag >= 7 && result_mag <=9)
-								mag_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'mag:0'
-								result_text += mag_text.value
-							else
-								if (result_mag >= 10 && result_mag <=13)
-									mag_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'mag:1'
-									result_text += mag_text.value
-								else
-									if (result_mag >= 14 && result_mag <=18)
-										mag_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'mag:2'
-										result_text += mag_text.value
-									else
-										mag_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'mag:3'
-										result_text += mag_text.value
-									end
-								end
-							end
-						end
-					end
-					result_text += ' '
-					
-					if (result_int <= 3)
-						int_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'int:-2'
-						result_text += int_text.value
-					else
-						if (result_int >=4 && result_int <=6)
-							int_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'int:-1'
-							result_text += int_text.value
-						else
-							if (result_int >= 7 && result_int <=9)
-								int_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'int:0'
-								result_text += int_text.value
-							else
-								if (result_int >= 10 && result_int <=13)
-									int_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'int:1'
-									result_text += int_text.value
-								else
-									if (result_int >= 14 && result_int <=18)
-										int_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'int:2'
-										result_text += int_text.value
-									else
-										int_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'int:3'
-										result_text += int_text.value
-									end
-								end
-							end
-						end
-					end
-					result_text += ' '
-					
-					if (result_tra <= 3)
-						tra_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'tra:-2'
-						result_text += tra_text.value
-					else
-						if (result_tra >=4 && result_tra <=6)
-							tra_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'tra:-1'
-							result_text += tra_text.value
-						else
-							if (result_tra >= 7 && result_tra <=9)
-								tra_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'tra:0'
-								result_text += tra_text.value
-							else
-								if (result_tra >= 10 && result_tra <=13)
-									tra_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'tra:1'
-									result_text += tra_text.value
-								else
-									if (result_tra >= 14 && result_tra <=18)
-										tra_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'tra:2'
-										result_text += tra_text.value
-									else
-										tra_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'tra:3'
-										result_text += tra_text.value
-									end
-								end
-							end
-						end
-					end
-					result_text += ' '
-					if (result_hp <= 45)
-						hp_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'hp:-1'
-						result_text += hp_text.value + ' '
-					else
-						if (result_hp >=75)
-							hp_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'hp:1'
-							result_text += hp_text.value + ' '
-						else
-							result_text += ' '
-						end
-					end
-					
-					if (result_mana <= 45)
-						mana_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'mana:-1'
-						result_text += mana_text.value + ' '
-					else
-						if (result_mana >=75)
-							mana_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'mana:1'
-							result_text += mana_text.value + ' '
-						else
-							result_text += ' '
-						end
-					end
-					
-					if (result_vel <= 3)
-						vel_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'vel:-2'
-						result_text += vel_text.value
-					else
-						if (result_vel >=4 && result_vel <=6)
-							vel_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'vel:-1'
-							result_text += vel_text.value
-						else
-							if (result_vel >= 7 && result_vel <=9)
-								vel_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'vel:0'
-								result_text += vel_text.value
-							else
-								if (result_vel >= 10 && result_vel <=13)
-									vel_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'vel:1'
-									result_text += vel_text.value
-								else
-									if (result_vel >= 14 && result_vel <=18)
-										vel_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'vel:2'
-										result_text += vel_text.value
-									else
-										vel_text = Lib.find_by token:'heroDesc', item: gender_prefix + 'vel:3'
-										result_text += vel_text.value
-									end
-								end
-							end
-						end
-					end
-					
+					result_text += getHeroDesc('str', gender_prefix, result_str) + ' '
+					result_text += getHeroDesc('dex', gender_prefix, result_dex) + ' '
+					result_text += getHeroDesc('mag', gender_prefix, result_mag) + ' '
+					result_text += getHeroDesc('int', gender_prefix, result_int) + ' '
+					result_text += getHeroDesc('tra', gender_prefix, result_tra) + ' '
+					result_text += getHeroDescMainStats('hp', gender_prefix, result_hp) + ' '
+					result_text += getHeroDescMainStats('mana', gender_prefix, result_mana) + ' '
+					result_text += getHeroDesc('vel', gender_prefix, result_vel)
 				end
 			end
 		end
