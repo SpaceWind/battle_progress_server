@@ -117,7 +117,7 @@ class InfoapiController < ApplicationController
   end
   
 
-	def self.getHeroDesc(statPrefix, genderPrefix, value)
+	def getHeroDesc(statPrefix, genderPrefix, value)
 		result_text = ''
 		if (value <= 3)
 			str_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':-2'
@@ -149,7 +149,7 @@ class InfoapiController < ApplicationController
 		result_text
 	end
 	
-	def self.getHeroDescMainStats(statPrefix, genderPrefix, value)
+	def getHeroDescMainStats(statPrefix, genderPrefix, value)
 		result_text = ''
 		if (value <= 45)
 			hp_text = Lib.find_by token:'heroDesc', item: genderPrefix + statPrefix + ':-1'
