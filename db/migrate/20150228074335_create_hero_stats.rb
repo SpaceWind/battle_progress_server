@@ -16,6 +16,7 @@ class CreateHeroStats < ActiveRecord::Migration
       t.integer :start_dex
       t.integer :start_mag
       t.integer :start_int
+      t.integer :start_tra	
       t.integer :start_vel
       t.integer :start_hp
       t.integer :start_mana
