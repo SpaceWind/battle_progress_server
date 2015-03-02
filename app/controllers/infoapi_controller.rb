@@ -211,9 +211,13 @@ class InfoapiController < ApplicationController
 					###################################################################################
 					if (active_key.rolled_heroid)
 						prev_h_desc = HDescriptor.find_by hid: active_key.rolled_heroid
-						prev_h_desc.destroy
+						if (prev_h_desc)
+							prev_h_desc.destroy
+						end
 						prev_h_stats = HeroStats.find_by heroid: active_key.rolled_heroid
-						prev_h_stats.destroy
+						if (prev_h_stats)
+							prev_h_stats.destroy
+						end
 					end
 					gen_heroid = rand(36**16).to_s(36)	
 					t = HDescriptor.new
