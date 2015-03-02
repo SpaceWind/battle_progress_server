@@ -242,7 +242,7 @@ class InfoapiController < ApplicationController
 					gen_herostats.start_vel = result_vel
 					gen_herostats.start_hp = result_hp
 					gen_herostats.start_mana = result_mana
-					gen_herostats.text = result_text
+					gen_herostats.desc = result_text
 					
 					gen_herostats.save
 					active_key.rolled_heroid = gen_heroid
