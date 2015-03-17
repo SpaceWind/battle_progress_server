@@ -353,7 +353,7 @@ class InfoapiController < ApplicationController
 		if (active_key)
 			user = User.find_by login: active_key.login
 			if (user)
-				hero_belongs_to = UserXHero.find_by heroid: active_key.heroid, user: user.login
+				hero_belongs_to = UserXHero.find_by heroid: active_key.heroid, login: user.login
 				if (hero_belongs_to)
 					hero_id = active_key.heroid
 				else
