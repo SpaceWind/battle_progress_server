@@ -378,7 +378,7 @@ class InfoapiController < ApplicationController
 				h_slots_count = h_slots.count
 			end
 			if (h_inventar)
-				h_inventar = h_inventar.count
+				h_inventar_count = h_inventar.count
 			end
 		end
 		render json: {'success' => success, 'status' => status, 'stats' => h_stats, 'desc' => h_desc, 'inventar_count' => h_inventar_count, 'inventar' => h_inventar, 'slots_count' => h_slots_count, 'slots' => h_slots}
