@@ -6,9 +6,9 @@ class CreateItemDescs < ActiveRecord::Migration
       t.text :look
       t.string :owner_hero_id
       t.string :slot
-      t.int :value
-      t.int :worth
-      t.int :weight
+      t.integer :value
+      t.integer :worth
+      t.integer :weight
       t.text :history
 
       t.timestamps
