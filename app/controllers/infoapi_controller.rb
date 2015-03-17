@@ -226,7 +226,7 @@ class InfoapiController < ApplicationController
 					t.save
 					
 					gen_herostats = HeroStats.new
-					
+					gen_herostats.heroid = gen_heroid
 					gen_herostats.str = result_str
 					gen_herostats.dex = result_dex
 					gen_herostats.mag = result_mag
