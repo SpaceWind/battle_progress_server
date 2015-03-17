@@ -310,6 +310,79 @@ class InfoapiController < ApplicationController
 		result = {'success' => success, 'status' => status}
 		render json: result
 	end
+	
+	def useHero
+		success = true
+		status = 'OK'
+		active_key = ActiveKey.find_by apikey: params[:apikey]
+		user = nil
+		if (active_key)
+			user = User.find_by login: active_key.login
+			if (user)
+				uxh = UserXHero.find_by heroid: params[:heroid]
+				if (uxh)
+					active_key.heroid = params[:heroid]
+					active_key.save
+				else
+					success = false
+					status = 'Invalid hero ID'
+				end
+			else
+				success = false
+				status = 'Invalid User'
+			end
+		else
+			success = false
+			status = 'Invalid or inactive APIKEY'
+		end
+		render json: {'success' => success, 'status' => status}
+	end
+	
+	def heroPreview
+		success = true
+		status = 'OK'
+		active_key = ActiveKey.find_by apikey: params[:apikey]
+		user = nil
+		hero_id = nil
+		h_desc = nil
+		h_stats = nil
+		h_inventar = nil
+		h_slots = nil
+		h_slots_count = 0
+		h_inventar_count = 0
+		if (active_key)
+			user = User.find_by login: active_key.login
+			if (user)
+				hero_belongs_to = UserXHero.find_by heroid: active_key.heroid, user: user.login
+				if (hero_belongs_to)
+					hero_id = active_key.heroid
+				else
+					success = false
+					status = 'Hero does not belong to you!'
+				end
+			else
+				success = false
+				status = 'Invalid User'
+			end
+		else
+			success = false
+			status = 'Invalid or inactive APIKEY'
+		end
+	end
+	if (hero_id)
+		h_desc = HDescriptor.find_by hid: hero_id
+		h_stats = HeroStats.find_by heroid: hero_id
+		h_inventar = Inventar.where(heroid: hero_id)
+		h_slots = SlotItems.where(heroid: hero_id)
+		if (h_slots)
+			h_slots_count = h_slots.count
+		end
+		if (h_inventar)
+			h_inventar = h_inventar.count
+		end
+	end
+	render json: {'success' => success, 'status' => status, 'stats' => h_stats, 'desc' => h_desc, 'inventar_count' => h_inventar_count, 'inventar' => h_inventar, 'slots_count' => h_slots_count, 'slots' => h_slots}
+	
 end
 
 

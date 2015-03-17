@@ -26,6 +26,8 @@ BattleFiftos::Application.routes.draw do
   
   get 'hero/roll' => 'infoapi#rollHero'
   get 'hero/save' => 'infoapi#saveRolledChamp'
+  get 'hero/use' => 'infoapi#useHero'
+  get 'hero/preview' => 'infoapi#heroPreview'
   get 'libs/setup' => 'libs_api#setupLibs'
   
   get 'admin/promote' => 'admin_api#promote'
