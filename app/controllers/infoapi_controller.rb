@@ -368,21 +368,21 @@ class InfoapiController < ApplicationController
 			success = false
 			status = 'Invalid or inactive APIKEY'
 		end
-	end
-	if (hero_id)
-		h_desc = HDescriptor.find_by hid: hero_id
-		h_stats = HeroStats.find_by heroid: hero_id
-		h_inventar = Inventar.where(heroid: hero_id)
-		h_slots = SlotItems.where(heroid: hero_id)
-		if (h_slots)
-			h_slots_count = h_slots.count
+
+		if (hero_id)
+			h_desc = HDescriptor.find_by hid: hero_id
+			h_stats = HeroStats.find_by heroid: hero_id
+			h_inventar = Inventar.where(heroid: hero_id)
+			h_slots = SlotItems.where(heroid: hero_id)
+			if (h_slots)
+				h_slots_count = h_slots.count
+			end
+			if (h_inventar)
+				h_inventar = h_inventar.count
+			end
 		end
-		if (h_inventar)
-			h_inventar = h_inventar.count
+		render json: {'success' => success, 'status' => status, 'stats' => h_stats, 'desc' => h_desc, 'inventar_count' => h_inventar_count, 'inventar' => h_inventar, 'slots_count' => h_slots_count, 'slots' => h_slots}
 		end
-	end
-	render json: {'success' => success, 'status' => status, 'stats' => h_stats, 'desc' => h_desc, 'inventar_count' => h_inventar_count, 'inventar' => h_inventar, 'slots_count' => h_slots_count, 'slots' => h_slots}
-	
 end
 
 
