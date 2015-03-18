@@ -363,6 +363,8 @@ class InfoapiController < ApplicationController
 			else
 				success = false
 				status = 'Invalid User'
+				render json: {'success' => success, 'status' => status}
+				return
 			end
 		else
 			success = false
