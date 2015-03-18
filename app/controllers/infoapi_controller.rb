@@ -369,6 +369,8 @@ class InfoapiController < ApplicationController
 		else
 			success = false
 			status = 'Invalid or inactive APIKEY'
+			render json: {'success' => success, 'status' => status}
+			return
 		end
 
 		if (hero_id)
