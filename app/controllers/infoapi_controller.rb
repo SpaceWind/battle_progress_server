@@ -383,8 +383,12 @@ class InfoapiController < ApplicationController
 				h_inventar_count = h_inventar.count
 			end
 		end
-		render json: {'success' => success, 'status' => status, 'owner' => user.login, 'stats' => h_stats, 'desc' => h_desc, 'inventar_count' => h_inventar_count, 'inventar' => h_inventar, 'slots_count' => h_slots_count, 'slots' => h_slots}
+		if (user)
+			render json: {'success' => success, 'status' => status, 'owner' => user.login, 'stats' => h_stats, 'desc' => h_desc, 'inventar_count' => h_inventar_count, 'inventar' => h_inventar, 'slots_count' => h_slots_count, 'slots' => h_slots}
+		else
+			render json: {'success' => success, 'status' => status, 'owner' => nil, 'stats' => h_stats, 'desc' => h_desc, 'inventar_count' => h_inventar_count, 'inventar' => h_inventar, 'slots_count' => h_slots_count, 'slots' => h_slots
 		end
+	end
 end
 
 
