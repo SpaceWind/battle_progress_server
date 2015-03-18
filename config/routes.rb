@@ -35,8 +35,11 @@ BattleFiftos::Application.routes.draw do
   get 'admin/newFaction' => 'admin_api#newFaction'
   get 'admin/newClass' => 'admin_api#newClass'
   get 'admin/heroes' => 'admin_api#heroes'
+  get 'admin/spells' => 'spells_controller#getSpells'
+  get 'admin/spells/save' => 'spells_controller#saveSpells'
   get 'meta/classes' => 'admin_api#classes'
   get 'meta/factions' => 'admin_api#factions'
+  
   
   get 'admin/faction/cleanDesc' => 'admin_api#cleanFactionDesc'
   get 'admin/class/cleanDesc' => 'admin_api#cleanClassDesc'
