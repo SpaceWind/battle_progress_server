@@ -39,6 +39,9 @@ class SpellsControllerController < ApplicationController
 				spell = Spell.find_by spell_class: params[:sc], spell_name: params[:sn]
 				if (spell)
 					#if we are overwriting spell
+					if (params[:rn])
+						spell.spell_name = params[:rn]
+					end
 					spell.spell_desc = params[:d]
 					spell.save
 				else #when we need new spell
