@@ -494,7 +494,131 @@ class LibsApiController < ApplicationController
 		
 		
 		
+		#######################################################################################################################################
+		#######################################################################################################################################
+		#Creature Modificators
+		#######################################################################################################################################
+		#######################################################################################################################################
 		
+		lib = Lib.new
+		lib.token = 'creatureMod.m'
+		lib.item = '0'
+		lib.value = 'Хилый'
+		lib.save
+			
+		lib = Lib.new
+		lib.token = 'creatureMod.m'
+		lib.item = '1'
+		lib.value = 'Маленький'
+		lib.save
+		
+		lib = Lib.new
+		lib.token = 'creatureMod.m'
+		lib.item = '2'
+		lib.value = 'Отсталый'
+		lib.save
+		
+		lib = Lib.new
+		lib.token = 'creatureMod.m'
+		lib.item = '3'
+		lib.value = 'Слабый'
+		lib.save
+		
+		lib = Lib.new
+		lib.token = 'creatureMod.m'
+		lib.item = '4'
+		lib.value = 'Великолепный'
+		lib.save
+		
+		lib = Lib.new
+		lib.token = 'creatureMod.m'
+		lib.item = '5'
+		lib.value = 'Сильный'
+		lib.save
+		
+		lib = Lib.new
+		lib.token = 'creatureMod.m'
+		lib.item = '6'
+		lib.value = 'Мощный'
+		lib.save
+		
+		lib = Lib.new
+		lib.token = 'creatureMod.m'
+		lib.item = '7'
+		lib.value = 'Огромный'
+		lib.save
+		
+		lib = Lib.new
+		lib.token = 'creatureMod.m'
+		lib.item = '8'
+		lib.value = 'Великий'
+		lib.save
+		
+		lib = Lib.new
+		lib.token = 'creatureMod.m'
+		lib.item = '9'
+		lib.value = 'Титанический'
+		lib.save
+		
+		lib = Lib.new
+		lib.token = 'creatureMod.f'
+		lib.item = '0'
+		lib.value = 'Хилая'
+		lib.save
+		
+		lib = Lib.new
+		lib.token = 'creatureMod.f'
+		lib.item = '1'
+		lib.value = 'Маленькая'
+		lib.save
+		
+		lib = Lib.new
+		lib.token = 'creatureMod.f'
+		lib.item = '2'
+		lib.value = 'Отсталая'
+		lib.save
+		
+		lib = Lib.new
+		lib.token = 'creatureMod.f'
+		lib.item = '3'
+		lib.value = 'Слабая'
+		lib.save
+		
+		lib = Lib.new
+		lib.token = 'creatureMod.f'
+		lib.item = '4'
+		lib.value = 'Великолепная'
+		lib.save
+		
+		lib = Lib.new
+		lib.token = 'creatureMod.f'
+		lib.item = '5'
+		lib.value = 'Сильная'
+		lib.save
+		
+		lib = Lib.new
+		lib.token = 'creatureMod.f'
+		lib.item = '6'
+		lib.value = 'Мощная'
+		lib.save
+		
+		lib = Lib.new
+		lib.token = 'creatureMod.f'
+		lib.item = '7'
+		lib.value = 'Великая'
+		lib.save
+		
+		lib = Lib.new
+		lib.token = 'creatureMod.f'
+		lib.item = '8'
+		lib.value = 'Огромная'
+		lib.save
+		
+		lib = Lib.new
+		lib.token = 'creatureMod.f'
+		lib.item = '9'
+		lib.value = 'Титаническая'
+		lib.save
 		
 		alllibs = Lib.all
 		render json: alllibs
@@ -524,4 +648,6 @@ class LibsApiController < ApplicationController
 		result = {'success' => true, 'status' => 'OK', 'text' => text}
 		render json: result
 	end
+	
+	
 end
