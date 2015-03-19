@@ -37,6 +37,7 @@ BattleFiftos::Application.routes.draw do
   get 'admin/heroes' => 'admin_api#heroes'
   get 'admin/spells' => 'spells_controller#getSpells'
   get 'admin/spells/save' => 'spells_controller#saveSpells'
+  get 'admin/spells/destroy' => 'spells_controller#destroySpell'
   get 'meta/classes' => 'admin_api#classes'
   get 'meta/factions' => 'admin_api#factions'
   

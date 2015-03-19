@@ -40,6 +40,11 @@ class SpellsControllerController < ApplicationController
 				if (spell)
 					#if we are overwriting spell
 					if (params[:rn])
+						renamed_spell = Spell.find_by spell_class: params[:sc], spell_name: params[:rn]
+						if (renamed_spell)
+							spell.destroy
+							spell = renamed_spell
+						end
 						spell.spell_name = params[:rn]
 					end
 					spell.spell_desc = params[:d]
@@ -58,6 +63,34 @@ class SpellsControllerController < ApplicationController
 		else
 			status = 'Invalid or Inactive APIKEY'
 			success = false
+		end
+		render json: {'success' => success, 'status' => status}
+	end
+	
+	def destroySpell
+		success = true
+		status = 'OK'
+		active_key = ActiveKey.find_by apikey: params[:apikey]
+		user = nil
+		spell = nil
+		spells_count = 0
+		if (active_key)
+			user = User.find_by login: active_key.login, group: 'admins'
+			if (user)
+				spell = Spell.find_by spell_class: params[:spell_class], spell_name: params[:spell_name]
+				if (spell)
+					spell.destroy
+				else
+					success = false
+					status = 'Spell was not found'
+				end
+			else
+				success = false
+				status = 'User is not admin or does not exist'
+			end
+		else
+			success = false
+			status = 'Invalid or Inactive APIKEY'
 		end
 		render json: {'success' => success, 'status' => status}
 	end
