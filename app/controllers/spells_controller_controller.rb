@@ -43,7 +43,7 @@ class SpellsControllerController < ApplicationController
 			success = false
 			status = 'Wrong or Inactive APIKEY'
 		end
-		render json: {'success' => success, 'status' => status, 'spells' => spells_array}
+		render json: {'success' => success, 'status' => status, 'spells' => spells_array, 'spell_count' => spells_count}
 	end
 	
 	def saveSpells
