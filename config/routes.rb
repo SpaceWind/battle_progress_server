@@ -58,6 +58,14 @@ BattleFiftos::Application.routes.draw do
   get 'admin/class/setSpecs' => 'admin_api#setupClassSpecs'
   
   
+  get 'admin/creatures' => 'creature#getCreatures'
+  get 'admin/creatures/save' => 'creature#saveCreature'
+  get 'admin/creatures/remove' => 'creature#removeCreature'
+  get 'admin/creatures/spells/save' => 'creature#saveSpellsForCreature'
+  get 'admin/creatures/spells/extra/save' => 'creature#saveAdditionalSpellsForCreature'
+  get 'admin/creatures/spells/remove' => 'creature#removeSpell'
+  
+  
   
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

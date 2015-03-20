@@ -85,6 +85,29 @@ class CreatureController < ApplicationController
 				'suffixes' => suffix_creatures, 'suffix_count' => suffix_count, 'suffix_spells' => suffix_spells_hash}
 	end
 	
+	def removeCreature
+		success = true
+		status = 'OK'
+		active_key = ActiveKey.find_by apikey: params[:apikey]
+		user = nil
+		if (active_key)
+			user = User.find_by login: active_key.login, group: 'admins'
+			if (user)
+				creatures = Creature.where(creature_name: params[:creature_name])
+				creatures.destroy
+				spells = CreatureXSpell.where(creature_name: params[:creature_name])
+				spells.destroy
+			else
+				success = false
+				status = 'Wrong User'
+			end
+		else
+			success = false
+			status = 'Invalid or Inactive APIKEY'
+		end
+		render json: {'success' => success, 'status' => status}
+	end
+	
 	
 	def saveCreature
 		#?creature_type=creature&creature_name=гоблин&mod=0&str=12&dex=9&mag=12&in=18&tra=22&vel=90&hp=220&mana=180&gender=male
@@ -231,4 +254,6 @@ class CreatureController < ApplicationController
 		end
 		render json: {'success' => success, 'status' => status}
 	end
+	
+	
 end
