@@ -25,6 +25,26 @@ class SpellsControllerController < ApplicationController
 		render json: {'success' => success, 'status' => status, 'spells_count' => spells_count, 'spells' => spells}
 	end
 	
+	def getAllSpellNames
+		success = true
+		status = 'OK'
+		active_key = ActiveKey.find_by apikey: params[:apikey]
+		spells_array = Array.new
+		spells_count = 0
+		if (active_key)
+			spells = Spell.all
+			if (spells)
+				spells_count = spells.count
+				spells.each {|spell|
+					spells_array.push({'spell_name' => spell.spell_name, 'spell_class' => spell.spell_class})
+				}
+			end
+		else
+			success = false
+			status = 'Wrong or Inactive APIKEY'
+		end
+		render json: {'success' => success, 'status' => status, 'spells' => spells_array}
+	end
 	
 	def saveSpells
 		success = true
